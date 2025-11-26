@@ -1,0 +1,7 @@
+name: Génrérer JAR et déployer en prod
+
+on:
+  push:
+    branches:
+      - main
+
