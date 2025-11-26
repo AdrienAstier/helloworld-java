@@ -21,14 +21,20 @@ jobs:
         java-version: '17'
         distribution: zulu
 
-    - name: Build le projet
-      run: mvn clean package -DskipTests
-
     - name: Mettre les dépendences en cache
       uses: actions/cache@v4
       with:
         path: $MAVEN_OPTS
         key: librairies
+
+    - name: Build le projet
+      run: mvn clean package -DskipTests
+
+    - name: Upload dans l'artifact
+      uses: actions/upload-artifact@4.4.3
+      with:
+        name: app
+        path: $MAVEN_OPTS
 
   test:
     runs-on: ubuntu-latest
@@ -36,7 +42,7 @@ jobs:
     name: Lance les tests unitaires
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: Set up JDK 17
         uses: actions/setup-java@v4.5.0
         with:
