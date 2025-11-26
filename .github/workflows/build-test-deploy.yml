@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  MAVEN_OPTS: "-Dmaven.repo.local=/chemin/vers/conteneur/des/dépendances"
+  MAVEN_OPTS: "-Dmaven.repo.local=~dependances/lib/"
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
         java-version: '17'
         distribution: zulu
 
-    - name: Package le projet
+    - name: Build le projet
       run: mvn clean package -DskipTests
 
     - name: Mettre les dépendences en cache
