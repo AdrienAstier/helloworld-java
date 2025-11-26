@@ -12,7 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@main
-    - name: Set up JDK 8
+    - name: Set up JDK 17
       uses: actions/setup-java@v4.5.0
+      with:
+        java-version: '17'
+        distribution: zulu
 
-    
+    - name: Package le projet
+      run: mvn clean package -DskipTests
