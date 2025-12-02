@@ -23,7 +23,7 @@ jobs:
     - name: Mettre les dépendences en cache
       uses: actions/cache@v4
       with:
-        path: $MAVEN_OPTS
+        path: ${{github.workspace}}/.m2/repository
         key: librairies
 
     - name: Build le projet
@@ -44,7 +44,7 @@ jobs:
       - name: Récupérer le cache Maven
         uses: actions/cache@v4
         with:
-          path: $MAVEN_OPTS
+          path: ${{github.workspace}}/.m2/repository
           key: librairies
 
       - uses: actions/checkout@v6.0.0
