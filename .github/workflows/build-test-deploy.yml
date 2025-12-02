@@ -46,11 +46,8 @@ jobs:
         with:
           path: $MAVEN_OPTS
           key: librairies
-    
-      - name: Télécharger le code compilé
-        uses: actions/download-artifact@v4
-        with:
-          name: helloworld-${{ vars.PROJECT_VERSION }}
+
+      - uses: actions/checkout@main
 
       - name: Lancer les tests
         run: mvn test
