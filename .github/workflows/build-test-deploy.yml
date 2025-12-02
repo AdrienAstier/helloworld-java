@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v6.0.0
     - name: Set up JDK 17
       uses: actions/setup-java@v4.5.0
       with:
@@ -47,7 +47,7 @@ jobs:
           path: $MAVEN_OPTS
           key: librairies
 
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v6.0.0
 
       - name: Lancer les tests
         run: mvn test
