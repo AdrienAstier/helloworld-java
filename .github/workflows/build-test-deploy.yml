@@ -10,7 +10,6 @@ env:
 
 jobs:
   build:
-    name: Build de l'application
     runs-on: ubuntu-latest
 
     steps:
@@ -39,10 +38,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    name: Lance les tests unitaires
     continue-on-error: true
 
     steps:
+      - name: Récupérer le cache Maven
+        uses: actions/cache@v4
+        with:
+          path: $MAVEN_OPTS
+          key: librairies
+    
       - name: Télécharger le code compilé
         uses: actions/download-artifact@v4
         with:
@@ -52,7 +56,6 @@ jobs:
         run: mvn test
 
   deploy:
-    name: Déploiement en production
     runs-on: ubuntu-latest
     needs: [build, test]
 
