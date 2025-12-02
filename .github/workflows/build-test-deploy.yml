@@ -41,13 +41,17 @@ jobs:
     continue-on-error: true
 
     steps:
+      - uses: actions/checkout@v6.0.0
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4.5.0
+        with:
+          java-version: '17'
+          distribution: zulu
       - name: Récupérer le cache Maven
         uses: actions/cache@v4
         with:
           path: ${{github.workspace}}/.m2/repository
           key: librairies
-
-      - uses: actions/checkout@v6.0.0
 
       - name: Lancer les tests
         run: mvn test
