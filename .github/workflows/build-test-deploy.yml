@@ -23,11 +23,10 @@ jobs:
     - name: Mettre les dépendences en cache
       uses: actions/cache@v4
       with:
-        path: ${{ github.workspace }} /.m2/repository
+        path: ${{ github.workspace }}/.m2/repository
         key: maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           maven-
-
 
     - name: Build le projet
       run: mvn clean package -DskipTests
@@ -53,7 +52,7 @@ jobs:
       - name: Récupérer le cache Maven
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }} /.m2/repository
+          path: ${{ github.workspace }}/.m2/repository
           key: maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             maven-
