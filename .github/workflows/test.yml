@@ -1,0 +1,17 @@
+name: Test de workflow
+
+on:
+  workflow_dispatch:
+  #schedule:
+    #- cron: "4 5 * * *"
+
+jobs:
+  main_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Premier message"
+        run: echo "Récupération du code source"
+
+      - name: "Deuxième message"
+        run: echo "Vérification terminée"
